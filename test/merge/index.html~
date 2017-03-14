@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Welcome to OpenResty!</title>
+    <link rel="shortcut icon" href="/static/icons/android.png">
+    <link type="text/css" href="/static/style/body.css" rel="stylesheet" media="screen"/>
+    <link type="text/css" href="/static/style/content.css" rel="stylesheet" media="screen"/>
+    <script type="text/javascript" src="/static/js/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 class="header">Welcome to OpenResty!</h1>
+<p>If you see this page, the OpenResty web platform is successfully installed.</p>
+<p>And if the page background color is gray, the world <span>OpenResty's</span> color is blue, that means the <span> css merge </span> is effective :)</p>
+<p class="footer">Thank you for flying OpenResty.</p>
+</body>
+</html>

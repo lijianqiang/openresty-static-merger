@@ -1,0 +1,12 @@
+span {
+    color:blue;
+}
+
+.header {
+    color:green;
+}
+
+.footer {
+    margin-top: 44px;
+    color:#afafaf;
+}
