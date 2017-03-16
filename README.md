@@ -1,5 +1,5 @@
 # openresty-static-merger
-web静态资源合并输出，主要用于合并静态文件，减少http请求，加快静态文件访问速度的模块。
+web静态资源合并输出，主要用于合并静态文件，减少http请求，加快静态文件访问速度
 
 通常用于js、css类文本型静态文件
 
@@ -30,11 +30,15 @@ web静态资源合并输出，主要用于合并静态文件，减少http请求�
 	
 合并后加载过程，首次
 
-![合并后加载过程1](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_1.jpg "origin request process")
+	首次加载，需要构建缓存
 
-合并后加载过程，缓存
+![合并后加载过程1](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_1.jpg "merge request process")
 
-![合并后加载过程2](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_2.jpg "origin request process")
+合并后加载过程，再次
+
+	再次加载，缓存已建立
+
+![合并后加载过程2](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_2.jpg "merge request process")
 
 
 ### 使用
