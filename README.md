@@ -60,6 +60,20 @@ demo部署路径
 	|                     |--cache
 
 
+### 配置
 
+lua配置文件
+> lua/config/config.lua
+
+	local config = {
+		path = {
+			cache = "/data/wwwroot/xxxxx/cache",          -- cache文件保存路径
+			static = "/data/wwwroot/xxxxx/demo/common"    -- 原始static文件存放路径
+		},
+	
+		cache_mode = 1,					-- 缓存方式，1：ngx.shared， 2：本地file
+		uri_spl = ";",					-- uri里的拼接符号
+		release_version = "20170315"  	-- 当前static文件发布的版本号
+	}
 
 
