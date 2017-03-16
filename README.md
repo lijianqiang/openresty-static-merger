@@ -1,12 +1,12 @@
 # openresty-static-merger
 web静态资源合并输出，主要用于合并静态文件，减少http请求，加快静态文件访问速度的模块。
 
-目前只支持js、css类文本型静态文件
+通常用于js、css类文本型静态文件
 
 
 ### 效果
 
-#####合并前
+##### 合并前
 
 合并前代码块
 
@@ -20,7 +20,7 @@ web静态资源合并输出，主要用于合并静态文件，减少http请求�
 ![合并前加载过程](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/origin_1.jpg "origin request process")
 
 
-#####合并后
+##### 合并后
 
 合并后代码块
 
@@ -30,11 +30,11 @@ web静态资源合并输出，主要用于合并静态文件，减少http请求�
 	
 合并后加载过程，首次
 
-![合并前加载过程](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_1.jpg "origin request process")
+![合并后加载过程1](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_1.jpg "origin request process")
 
 合并后加载过程，缓存
 
-![合并前加载过程](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_2.jpg "origin request process")
+![合并后加载过程2](https://github.com/lijianqiang/openresty-static-merger/blob/master/jpg/merger_2.jpg "origin request process")
 
 
 ### 使用
@@ -45,19 +45,19 @@ web静态资源合并输出，主要用于合并静态文件，减少http请求�
 > /data/program/openresty
 
 	|--/data/program/openresty
-	|						`--nginx
-	|								`--conf
-	|									   `--nginx.conf
+	|                        |--nginx
+	|                               |--conf
+	|                                      |--nginx.conf
 
 demo部署路径
 
 	|--/data/wwwroot/xxxxx
-	|					`--demo
-	|							`--common
-	|							`--origin
-	|							`--merge
-	|					`--lua
-	|					`--cache
+	|                     |--demo
+	|                            |--common
+	|                            |--origin
+	|                            |--merge
+	|                     |--lua
+	|                     |--cache
 
 
 
