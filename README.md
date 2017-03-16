@@ -24,8 +24,8 @@ web静态资源合并输出，主要用于合并静态文件，减少http请求�
 
 合并后代码块
 
-	<link rel="shortcut icon" href="/static/icons/android.png">  
-    <link type="text/css" href="/static/style/body.css?v=20170315;/static/style/content.css?v=20170315" rel="stylesheet" media="screen"/>
+	<link type="text/css" href="/static/style/body.css?v=20170315;/static/style/content.css?v=20170315" rel="stylesheet" media="screen"/>
+    <script type="text/javascript" src="/static/js/jquery-1.12.2.min.js?v=20170315;/static/js/bootstrap.min.js?v=20170315"></script>
 
 	
 合并后加载过程，首次
