@@ -27,6 +27,8 @@ local STATIC_PATH = config.path.static
 local URI_SPL = config.uri_spl
 
 local SHARED_CACHE = ngx.shared.static_cache
+--local CACHE_ITEM_SIZE = ngx.cache_item_size
+
 
 -- 本地私有方法
 local build_output
@@ -42,6 +44,11 @@ local get_file_name
 local split
 local is_table_empty
 
+local lrucache = require "resty.lrucache"
+local LC = lrucache.new(200) -- allow up to CACHE_ITEM_SIZE items in the cache
+if not LC then
+	return error("failed to create the lrucache: " .. (err or "unknown"))
+end
 
 local _M = {_VERSION = "20170315"}
 local mt = { __index = _M }
@@ -51,6 +58,7 @@ local ok, new_tab = pcall(require, "table.new")
 if not ok then
     new_tab = function () return {} end
 end
+
 
 
 function _M.run()
@@ -85,7 +93,7 @@ build_output = function(request_uri)
 	
 	local cache = get_content_cache(key)
 	if cache ~= nil then
-	    nlog(DEBUG, "[app]cache is existed[/app]")
+	    nlog(DEBUG, "[app]cache hit[/app]")
 		return cache
 	end
 	
@@ -102,8 +110,12 @@ end
 -- 构建缓存key
 --
 build_cache_key = function(request_uri)
-	local uri_md5 = ngx_md5(request_uri)
-	
+	local uri_md5 = LC:get(request_uri)
+	if not uri_md5 then
+	    nlog(DEBUG, "[app]key setting[/app]")
+		uri_md5 = ngx_md5(request_uri)
+		LC:set(request_uri, uri_md5)
+	end
 	if CACHE_MODE == 2 then
 	    uri_md5 = CACHE_PATH .. "/" .. uri_md5
 	end
@@ -115,6 +127,12 @@ end
 -- 获取缓存内容
 --
 get_content_cache = function(key)
+    local data = LC:get(key)
+	if data ~= nil and data ~= "" then
+	    nlog(DEBUG, "[app]lurcache hit[/app]")
+		return data
+	end
+	
 	if CACHE_MODE == 2 then
 		return get_file_cache(key)
 	end
@@ -126,6 +144,7 @@ end
 -- 设置缓存内容
 --
 set_content_cache = function(key, value)
+    LC:set(key, value)
 	if CACHE_MODE == 2 then
 		return set_file_cache(key, value)
 	end
